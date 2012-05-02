@@ -4,8 +4,8 @@ require File.expand_path('../lib/twitterfeed/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Mark Capodagli"]
   gem.email         = ["pimea.mark@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Create a nice twitter feed of any specified set of members}
+  gem.summary       = %q{Will allow you to see multiple feeds at once.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
