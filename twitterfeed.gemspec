@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "twitterfeed"
   gem.require_paths = ["lib"]
   gem.version       = Twitterfeed::VERSION
+  gem.add_dependency 'twitter', '> 2.2.0'
+  
 end

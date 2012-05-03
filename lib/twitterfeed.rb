@@ -1,5 +1,12 @@
-require "twitterfeed/version"
 
 module Twitterfeed
-  # Your code goes here...
+  
+  require 'twitterfeed/railtie' if defined?(Rails)
+
+
+    
+  def self.ung(string)
+    "hello hi #{string}"
+  end
+  
 end
