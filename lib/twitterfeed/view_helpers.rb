@@ -1,7 +1,9 @@
 module Twitterfeed
   module ViewHelpers
-    def pre(text)
-      
+    def twitterfeed(user)
+      Twitter.user_timeline(user).each do |tweet|
+        content_tag :pre, tweet.text
+      end
     end
   end
 end
