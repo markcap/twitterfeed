@@ -1,0 +1,64 @@
+#twitterfeed {
+
+  margin: 20px;
+  width: 300px;
+  float: right;
+  font: Helvetica;
+  font-size: 13px;
+}
+  
+  #twitterfeed_header {
+    font-size: 11px;
+    font-weight: bold;
+  }
+  
+  #twitterfeed_content {
+    height: 300px;
+    overflow: scroll;
+    overflow-x:hidden;
+    border: 1px solid black;
+    -webkit-border-radius: 5px;
+  	-moz-border-radius: 5px;
+  }
+
+  #twitterfeed_tweet {
+    border-bottom: 1px solid;
+    padding: 10px;
+    padding-left: 5px;
+    min-height: 50px;
+    
+  }
+    .even {
+      background-color: white;
+    }
+    
+    .odd {
+      background-color: #efedee;
+    }
+    
+    #twitterfeed_handle {
+      margin-bottom: 5px;
+    }
+    
+      #twitterfeed_handle a{
+        font-weight: bold;
+        color: blue;
+      }
+    
+      .twitterfeed_time{
+        float: right;
+        font-size: 10px;
+        font-weight: bold;
+        color: red;
+      }
+  
+    #twitterfeed_pic{
+      float: left;
+      margin-right: 10px;
+      height: 100% !important;
+      width: 50px;
+    }
+    
+    #twitterfeed_text {
+      margin-left: 60px;
+    }
