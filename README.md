@@ -13,7 +13,7 @@ Add this line to your application's Gemfile:
 
 Place helper line anywhere in your project with an array of twitter handles:
 
-<%= twitterfeed(["mark_cap", "wycats", "ruralocity"]) %>
+    <%= twitterfeed(["mark_cap", "wycats", "ruralocity"]) %>
 
 Enjoy!
 
