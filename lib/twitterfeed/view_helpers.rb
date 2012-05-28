@@ -4,7 +4,7 @@ module Twitterfeed
   module ViewHelpers
     def twitterfeed(name_array)
       
-      twitterfeed_data = YAML.load(File.open("twitterfeed.yml", 'w+'))
+      twitterfeed_data = YAML.load(File.open("tmp/twitterfeed.yml", 'w+'))
       
       #initializing cron type system. This will determine how often data is retrieved from twitter to not go over
       #Twitter API's 150 request per hour limit. The frequency is determined from how many twitter handles are being
@@ -14,7 +14,7 @@ module Twitterfeed
         Twitterfeed.update_twitterfeed(twitterfeed_data, name_array)
       end  
       
-      twitterfeed_data = YAML.load(File.open("twitterfeed.yml"))
+      twitterfeed_data = YAML.load(File.open("tmp/twitterfeed.yml"))
       #removing update time from array
       twitterfeed_data.slice!(0)
       render :partial => "twitterfeed/twitterfeed_box", :locals => { :tweet_array =>  twitterfeed_data}
@@ -24,7 +24,7 @@ module Twitterfeed
     def tweet_time(time)
       #displays the time for a tweet i.e. 36m, 12h, May 5
       if time < (Time.now - (3600 * 24))
-        time.strftime("%b %-d")
+        time.strftime("%b %d")
       else
         time_ago = Time.now - time
         if time_ago < 3600

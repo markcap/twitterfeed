@@ -17,6 +17,6 @@ module Twitterfeed
       tweet_array << {"handle" => tweet.user.screen_name, "text" => tweet.text, "created_at" => tweet.created_at,
                       "pic_url" => tweet.user.profile_image_url_https}
     end
-    File.open('twitterfeed.yml', 'w') {|f| f.write(tweet_array.to_yaml) }
+    File.open('tmp/twitterfeed.yml', 'w') {|f| f.write(tweet_array.to_yaml) }
   end
 end
