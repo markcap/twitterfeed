@@ -38,7 +38,7 @@ module Twitterfeed
     def linkify_tweet(tweet)
       @ats = tweet.scan(/@\w+/)
       @tags = tweet.scan(/#\S+/)
-      @links = tweet.scan(/http:\/\/\S+/)
+      @links = tweet.scan(/https?:\/\/\S+/)
       
       @ats.each do |a|
         tweet.gsub!(/#{a}/, "<a href='http://twitter.com/#{a[1..(a.length - 1)]}' target='_blank'>#{a}</a>")
@@ -49,6 +49,7 @@ module Twitterfeed
       end
       
       @links.each do |l|
+        l.delete! "\""
         tweet.gsub!(/#{l}/, "<a href='#{l}' target='_blank'>#{l}</a>")
       end
       

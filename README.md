@@ -11,6 +11,16 @@ Add this line to your application's Gemfile:
 
 ## Usage
 
+### Rails 3.1 w/ asset pipeline
+
+Just install and go!
+
+### Rails pre-3.1 or no asset piplie
+
+  rails generate twitterfeed
+
+### In your view
+
 Place helper line anywhere in your project with an array of twitter handles or hashtags:
 
     <%= twitterfeed(["mark_cap", "wycats", "ruralocity", "#ruby", "#rails"]) %>
@@ -23,4 +33,3 @@ Twitter API only allows 150 requests per hour, so to help with this, the frequen
 
 - Add authentication to boost limit up to 350
 - Read a file with twitter handles to initialize
-- Ability to include searches

@@ -3,7 +3,7 @@
 #twitterfeed
 
   #twitterfeed_header
-    TwitterFeed
+    = link_to image_tag('/assets/twitterfeed-logo.gif'), "https://github.com/markcap/twitterfeed", :target => '_blank'
   #twitterfeed_content
     - tweet_array.each do |tweet|
       #twitterfeed_tweet{:class => cycle('even','odd')}
