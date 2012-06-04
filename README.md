@@ -17,7 +17,7 @@ Just install and go!
 
 ### Rails pre-3.1 or no asset piplie
 
-  rails generate twitterfeed
+    rails generate twitterfeed
 
 ### In your view
 
