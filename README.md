@@ -15,7 +15,7 @@ Add this line to your application's Gemfile:
 
 Just install and go!
 
-### Rails pre-3.1 or no asset pipline
+### Rails pre-3.1 or no asset pipeline
 
     rails generate twitterfeed
 
