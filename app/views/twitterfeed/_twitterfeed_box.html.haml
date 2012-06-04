@@ -8,12 +8,12 @@
     - tweet_array.each do |tweet|
       #twitterfeed_tweet{:class => cycle('even','odd')}
         #twitterfeed_pic
-          = image_tag tweet["pic_url"]
+          = link_to image_tag(tweet["pic_url"]), "http://twitter.com/#{tweet['handle']}", :target => '_new'
         #twitterfeed_handle
           =link_to tweet["handle"], "http://twitter.com/#{tweet['handle']}", :target => '_new'
         
           .twitterfeed_time
             =tweet_time(tweet["created_at"])
         #twitterfeed_text
-          = tweet["text"]
+          = linkify_tweet(tweet["text"])
       

@@ -55,6 +55,7 @@
     #twitterfeed_pic{
       float: left;
       margin-right: 10px;
+      margin-top: 5px;
       height: 100% !important;
       width: 50px;
     }

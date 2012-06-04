@@ -34,6 +34,26 @@ module Twitterfeed
         end
       end
     end
+    
+    def linkify_tweet(tweet)
+      @ats = tweet.scan(/@\w+/)
+      @tags = tweet.scan(/#\S+/)
+      @links = tweet.scan(/http:\/\/\S+/)
+      
+      @ats.each do |a|
+        tweet.gsub!(/#{a}/, "<a href='http://twitter.com/#{a[1..(a.length - 1)]}' target='_blank'>#{a}</a>")
+      end
+      
+      @tags.each do |t|
+        tweet.gsub!(/#{t}/, "<a href='http://twitter.com/search/%23#{t[1..(t.length - 1)]}' target='_blank'>#{t}</a>")
+      end
+      
+      @links.each do |l|
+        tweet.gsub!(/#{l}/, "<a href='#{l}' target='_blank'>#{l}</a>")
+      end
+      
+      tweet.html_safe
+    end
   end
 end
 
