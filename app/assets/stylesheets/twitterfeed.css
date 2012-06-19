@@ -37,12 +37,18 @@
     
     #twitterfeed_handle {
       margin-bottom: 5px;
+      color: black;
     }
     
       #twitterfeed_handle a{
         font-weight: bold;
-        color: blue;
+        color: black;
       }
+      
+        #twitterfeed_handle a:hover{
+          color: #1ba09f;
+          font-style: underline;
+        }
     
       .twitterfeed_time{
         float: right;

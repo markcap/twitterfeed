@@ -28,7 +28,7 @@ module Twitterfeed
                       "pic_url" => tweet.user.nil? ? tweet.profile_image_url_https : tweet.user.profile_image_url_https
                       }
     end
-    File.open('tmp/twitterfeed.yml', 'w') {|f| f.write(tweet_array.to_yaml) }
+    File.open('twitterfeed.yml', 'w') {|f| f.write(tweet_array.to_yaml) }
   end
   
 end
