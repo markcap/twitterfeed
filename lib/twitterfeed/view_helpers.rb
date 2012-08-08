@@ -2,7 +2,10 @@ require 'twitter'
 
 module Twitterfeed
   module ViewHelpers
-    def twitterfeed(name_array)
+    def twitterfeed(name_array, options = {})
+
+      defaults = {:align => 'right', :max => 20}
+      defaults.merge!(options)
       
       twitterfeed_data = YAML.load(File.open("twitterfeed.yml", 'w+'))
       
@@ -11,13 +14,13 @@ module Twitterfeed
       #retrieved. 1 handle will be retrieved maximum of 150 times per hour etc.
       
       if !twitterfeed_data || twitterfeed_data.first["last_update"] < (Time.now - (60.0 * (60.0/(150.0/name_array.size))))
-        Twitterfeed.update_twitterfeed(twitterfeed_data, name_array)
+        Twitterfeed.update_twitterfeed(twitterfeed_data, name_array, defaults[:max])
       end  
       
       twitterfeed_data = YAML.load(File.open("twitterfeed.yml"))
       #removing update time from array
       twitterfeed_data.slice!(0)
-      render :partial => "twitterfeed/twitterfeed_box", :locals => { :tweet_array =>  twitterfeed_data}
+      render :partial => "twitterfeed/twitterfeed_box", :locals => { :tweet_array =>  twitterfeed_data, :align => defaults[:align]}
  
     end
     
@@ -36,6 +39,7 @@ module Twitterfeed
     end
     
     def linkify_tweet(tweet)
+      #this turns all hashtags, ats, and links into html links to click on
       @ats = tweet.scan(/@\w+/)
       @tags = tweet.scan(/#\S+/)
       @links = tweet.scan(/https?:\/\/\S+/)

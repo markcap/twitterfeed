@@ -15,15 +15,19 @@ Add this line to your application's Gemfile:
 
 Just install and go!
 
-### Rails pre-3.1 or no asset pipeline
+### Rails pre-3.1 or no asset piplie
 
-    rails generate twitterfeed
+  rails generate twitterfeed
 
 ### In your view
 
 Place helper line anywhere in your project with an array of twitter handles or hashtags:
 
     <%= twitterfeed(["mark_cap", "wycats", "ruralocity", "#ruby", "#rails"]) %>
+    
+Options:
+    
+    <%= twitterfeed(["#ruby", "#rails"], :align => "left", :max => 10) %>
 
 Enjoy!
 

@@ -1,9 +1,9 @@
 =stylesheet_link_tag "twitterfeed"
 
-#twitterfeed
+#twitterfeed{:class => align}
 
-  #twitterfeed_header
-    = link_to image_tag('/assets/twitterfeed-logo.gif'), "https://github.com/markcap/twitterfeed", :target => '_blank'
+  / #twitterfeed_header
+  /   = link_to image_tag('/assets/twitterfeed-logo.gif'), "https://github.com/markcap/twitterfeed", :target => '_blank'
   #twitterfeed_content
     - tweet_array.each do |tweet|
       #twitterfeed_tweet{:class => cycle('even','odd')}
