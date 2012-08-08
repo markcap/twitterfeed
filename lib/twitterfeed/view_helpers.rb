@@ -54,6 +54,7 @@ module Twitterfeed
       
       @links.each do |l|
         l.delete! "\""
+        l.delete! ")"
         tweet.gsub!(/#{l}/, "<a href='#{l}' target='_blank'>#{l}</a>")
       end
       

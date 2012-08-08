@@ -8,7 +8,7 @@ module Twitterfeed
     total_tweets = []
     name_array.first(150).each do |name|
       if name[0] == "#"
-        Twitter.search(name, :rpp => 20).each do |tweet|
+        Twitter.search(name, :rpp => 20).results.each do |tweet|
           total_tweets << tweet 
         end
       else
