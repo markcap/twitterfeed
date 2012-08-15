@@ -4,8 +4,7 @@ module Twitterfeed
   module ViewHelpers
     def twitterfeed(name_array, options = {})
 
-      defaults = {:align => 'right', :max => 20}
-      defaults.merge!(options)
+      defaults = Twitterfeed.set_defaults(options)
       
       twitterfeed_data = YAML.load(File.open("twitterfeed.yml", 'w+'))
       
@@ -49,6 +48,8 @@ module Twitterfeed
       end
       
       @tags.each do |t|
+        t.delete! "\""
+        t.delete! ")"
         tweet.gsub!(/#{t}/, "<a href='http://twitter.com/search/%23#{t[1..(t.length - 1)]}' target='_blank'>#{t}</a>")
       end
       

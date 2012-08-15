@@ -31,4 +31,23 @@ module Twitterfeed
     File.open('twitterfeed.yml', 'w') {|f| f.write(tweet_array.to_yaml) }
   end
   
+  def self.set_defaults(options)
+    #sets values for twitterfeed window options, with some validations
+    
+    defaults = {:align => 'right', :max => 20}
+    defaults.merge!(options)
+    
+    if (defaults[:align] != ("left" || "right"))
+      defaults[:align] = "right"
+    end
+    
+    if (defaults[:max] < 0 || defaults[:max] > 20)
+      defaults[:max] = 20
+    end
+    
+    defaults
+    
+  end
+    
+  
 end
