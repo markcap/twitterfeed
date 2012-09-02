@@ -16,15 +16,20 @@
   
   #twitterfeed_header {
     margin-bottom: 5px;
-  }
+    font-family: arial;
+    font-size: 15px;
+    font-style: italic;}
+    
+    #twitterfeed_header img{
+      margin-left: 10px;
+      }
   
   #twitterfeed_content {
     height: 300px;
     overflow: scroll;
     overflow-x:hidden;
     border: 1px solid black;
-    -webkit-border-radius: 5px;
-  	-moz-border-radius: 5px;
+  	border-radius: 5px;
   }
 
   #twitterfeed_tweet {

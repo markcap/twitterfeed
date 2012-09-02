@@ -2,6 +2,7 @@ require 'twitter'
 
 module Twitterfeed
   module ViewHelpers
+    
     def twitterfeed(name_array, options = {})
 
       defaults = Twitterfeed.set_defaults(options)
@@ -19,7 +20,8 @@ module Twitterfeed
       twitterfeed_data = YAML.load(File.open("twitterfeed.yml"))
       #removing update time from array
       twitterfeed_data.slice!(0)
-      render :partial => "twitterfeed/twitterfeed_box", :locals => { :tweet_array =>  twitterfeed_data, :align => defaults[:align]}
+      render :partial => "twitterfeed/twitterfeed_box", 
+        :locals => { :tweet_array =>  twitterfeed_data, :align => defaults[:align], :title => defaults[:title]}
  
     end
     
@@ -44,23 +46,31 @@ module Twitterfeed
       @links = tweet.scan(/https?:\/\/\S+/)
       
       @ats.each do |a|
-        tweet.gsub!(/#{a}/, "<a href='http://twitter.com/#{a[1..(a.length - 1)]}' target='_blank'>#{a}</a>")
+        at = sanitize_link(a)
+        tweet.gsub!(/#{at}/, "<a href='http://twitter.com/#{at[1..(at.length - 1)]}' target='_blank'>#{at}</a>")
       end
       
       @tags.each do |t|
-        t.delete! "\""
-        t.delete! ")"
-        tweet.gsub!(/#{t}/, "<a href='http://twitter.com/search/%23#{t[1..(t.length - 1)]}' target='_blank'>#{t}</a>")
+        tag = sanitize_link(t)
+        tweet.gsub!(/#{tag}(\Z|[\s.,()!?\"\'*])/, "<a href='http://twitter.com/search/%23#{tag[1..(tag.length - 1)]}' target='_blank'>#{tag}</a> ")
       end
       
       @links.each do |l|
-        l.delete! "\""
-        l.delete! ")"
-        tweet.gsub!(/#{l}/, "<a href='#{l}' target='_blank'>#{l}</a>")
+        link = sanitize_link(l)
+        tweet.gsub!(/#{link}/, "<a href='#{link}' target='_blank'>#{link}</a>")
       end
       
       tweet.html_safe
     end
+    
+    def sanitize_link(item)
+      #this enables crap like (#ruby) and "http://yahoo.com" to link properly in tweets
+      while item.last =~ /[.,()!?\"\'*]/
+        item.chop!
+      end
+      item
+    end
+    
   end
 end
 

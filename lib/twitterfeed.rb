@@ -8,11 +8,11 @@ module Twitterfeed
     total_tweets = []
     name_array.first(150).each do |name|
       if name[0] == "#"
-        Twitter.search(name, :rpp => 20).results.each do |tweet|
+        Twitter.search("#{name} -rt", :rpp => 20).results.each do |tweet|
           total_tweets << tweet 
         end
       else
-        Twitter.user_timeline(name, :include_rts => true).each do |tweet|
+        Twitter.user_timeline(name, :include_rts => true, :exclude_replies => true, :count => 100).first(20).each do |tweet|
           total_tweets << tweet 
         end
       end
@@ -34,7 +34,7 @@ module Twitterfeed
   def self.set_defaults(options)
     #sets values for twitterfeed window options, with some validations
     
-    defaults = {:align => 'right', :max => 20}
+    defaults = {:align => 'right', :max => 20, :title => nil}
     defaults.merge!(options)
     
     if (defaults[:align] != ("left" || "right"))

@@ -27,7 +27,7 @@ Place helper line anywhere in your project with an array of twitter handles or h
     
 Options:
     
-    <%= twitterfeed(["#ruby", "#rails"], :align => "left", :max => 10) %>
+    <%= twitterfeed(["#ruby", "#rails"], :align => "left", :max => 10, :title => "Cool Ruby Tweets") %>
 
 Enjoy!
 
